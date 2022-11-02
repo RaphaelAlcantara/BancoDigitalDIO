@@ -17,16 +17,39 @@ while True:
         break
     elif opcao == 'd':
         print('Depositar')
-
+        print("-" * 30)
         valor = float(input('Valor do deposito: '))
         if valor > 0:
             saldo += valor
-            extrato.append(f'Deposito: R$ {valor}')
+            extrato.append(f'Deposito: R$ {valor:.2f}')
         else:
             print('A operação falhou')
 
     elif opcao == 's':
         print('Sacar')
+        print("-" * 30)
+
+        valor = float(input('Valor do saque: '))
+
+        excedeu_saldo = valor > saldo
+        excedeu_limite = valor > limite
+        excedeu_limite_saque = numero_saque >= LIMITE_SAQUE
+
+        if excedeu_saldo:
+            print('Saldo insuficiente')
+
+        elif excedeu_limite:
+            print('Limite excedido')
+
+        elif excedeu_limite_saque:
+            print('Limite de saques excedido')
+
+        else:
+            saldo -= valor
+            extrato.append(f'Saque: R$ {valor:.2f}')
+            numero_saque += 1
+
+
     elif opcao == 'e':
         print('Extrato')
         print("-" * 30)
