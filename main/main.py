@@ -48,6 +48,7 @@ while True:
             saldo -= valor
             extrato.append(f'Saque: R$ {valor:.2f}')
             numero_saque += 1
+            print('Saque realizado com sucesso')
 
 
     elif opcao == 'e':
