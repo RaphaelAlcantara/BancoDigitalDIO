@@ -30,7 +30,6 @@ while True:
         print("-" * 30)
 
         valor = float(input('Valor do saque: '))
-
         excedeu_saldo = valor > saldo
         excedeu_limite = valor > limite
         excedeu_limite_saque = numero_saque >= LIMITE_SAQUE
@@ -49,7 +48,6 @@ while True:
             extrato.append(f'Saque: R$ {valor:.2f}')
             numero_saque += 1
             print('Saque realizado com sucesso')
-
 
     elif opcao == 'e':
         print('Extrato')
