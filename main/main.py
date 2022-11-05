@@ -1,7 +1,5 @@
 import funcoes
 
-
-
 menu = """
 [d] Depositar
 [s] Sacar
@@ -30,24 +28,8 @@ while True:
         print("-" * 30)
 
         valor = float(input('Valor do saque: '))
-        excedeu_saldo = valor > saldo
-        excedeu_limite = valor > limite
-        excedeu_limite_saque = numero_saque >= LIMITE_SAQUE
-
-        if excedeu_saldo:
-            print('Saldo insuficiente')
-
-        elif excedeu_limite:
-            print('Limite excedido')
-
-        elif excedeu_limite_saque:
-            print('Limite de saques excedido')
-
-        else:
-            saldo -= valor
-            extrato.append(f'Saque: R$ {valor:.2f}')
-            numero_saque += 1
-            print('Saque realizado com sucesso')
+        saldo, extrato, numero_saque = funcoes.sacar(saldo=saldo, valor=valor, extrato=extrato, limite=limite,
+                                                     numero_saque=numero_saque, LIMITE_SAQUE=LIMITE_SAQUE)
 
     elif opcao == 'e':
         print('Extrato')
