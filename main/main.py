@@ -1,3 +1,7 @@
+import funcoes
+
+
+
 menu = """
 [d] Depositar
 [s] Sacar
@@ -19,11 +23,7 @@ while True:
         print('Depositar')
         print("-" * 30)
         valor = float(input('Valor do deposito: '))
-        if valor > 0:
-            saldo += valor
-            extrato.append(f'Deposito: R$ {valor:.2f}')
-        else:
-            print('A operação falhou')
+        saldo, extrato = funcoes.deposito(saldo, valor, extrato)
 
     elif opcao == 's':
         print('Sacar')
