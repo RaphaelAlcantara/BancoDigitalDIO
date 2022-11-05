@@ -34,9 +34,4 @@ while True:
     elif opcao == 'e':
         print('Extrato')
         print("-" * 30)
-        print('Saldo: R$ ', saldo)
-        print("Seus ultimos movimentos: ")
-        for movimento in extrato:
-            print(f"{movimento}")
-    else:
-        print('Opção inválida')
+        saldo, extrato = funcoes.tirar_extrato(saldo, extrato=extrato)

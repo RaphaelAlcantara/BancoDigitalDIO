@@ -27,5 +27,15 @@ def sacar(saldo, valor, extrato, limite, numero_saque, LIMITE_SAQUE):
 
         print('Saque realizado com sucesso')
         numero_saque += 1
+        print(f'Você já sacou {numero_saque} vezes')
 
     return saldo, extrato, numero_saque
+
+
+def tirar_extrato(saldo, /, extrato):
+    print('Saldo: R$ ', saldo)
+    print("Seus ultimos movimentos: ")
+    for movimento in extrato:
+        print(f"{movimento}")
+
+    return saldo, extrato
