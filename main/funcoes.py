@@ -1,7 +1,7 @@
 def deposito(saldo, valor, extrato):
     if valor > 0:
         saldo += valor
-        extrato.append(f'Deposito: R$ {valor:.2f}')
+        extrato.append(f'Deposito: \tR$ {valor:.2f}')
     else:
         print('A operação falhou')
     return saldo, extrato
@@ -23,7 +23,7 @@ def sacar(saldo, valor, extrato, limite, numero_saque, LIMITE_SAQUE):
 
     else:
         saldo -= valor
-        extrato.append(f'Saque: R$ {valor:.2f}')
+        extrato.append(f'Saque: \tR$ {valor:.2f}')
 
         print('Saque realizado com sucesso')
         numero_saque += 1
@@ -33,7 +33,7 @@ def sacar(saldo, valor, extrato, limite, numero_saque, LIMITE_SAQUE):
 
 
 def tirar_extrato(saldo, /, extrato):
-    print('Saldo: R$ ', saldo)
+    print('Saldo: \tR$ ', saldo)
     print("Seus ultimos movimentos: ")
     for movimento in extrato:
         print(f"{movimento}")

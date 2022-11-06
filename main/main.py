@@ -8,21 +8,24 @@ menu = """
 [2] Sacar
 [3] Extrato
 [4] Cadastrar
-[5] Criar Conta
+[5] Listar
+[6] Criar Conta
+[7] Listar Contas
 [q] Sair 
 =>"""
 
-
 # variaveis globais
+LIMITE_SAQUE = 3
+AGENCIA = "0001"
+
+saldo = 0
+limite = 500
+numero_saque = 0
+
 cpf_cadastrado = []
 usuario_cadastrado = []
 contas = []
-n_conta = 1
-saldo = 0
-limite = 500
 extrato = []
-numero_saque = 0
-LIMITE_SAQUE = 3
 
 while True:
     opcao = input(menu)
@@ -50,13 +53,28 @@ while True:
     elif opcao == '4':
         print('Cadastrar')
         print("-" * 30)
+        usuario_cadastrado, cpf_cadastrado = cad_usuario.cadastrar_usuario(usuario_cadastrado, cpf_cadastrado)
 
-        opcao = input("[1] Cadastrar\n[2] Listar\n=>")
+    elif opcao == '5':
+        print('Listar Cadastrados')
+        print("-" * 30)
 
-        if opcao == '1':
-            usuario_cadastrado, cpf_cadastrado = cad_usuario.cadastrar_usuario(usuario_cadastrado, cpf_cadastrado)
+        for i in cpf_cadastrado:
+            print(i)
 
-        elif opcao == '2':
-            cad_usuario.listar_usuario(usuario_cadastrado)
+        cad_usuario.listar_usuario(usuario_cadastrado)
 
+    elif opcao == '6':
+        print('Criar Conta')
+        print("-" * 30)
 
+        numero_conta = len(contas) + 1
+        conta = cad_usuario.criar_conta(AGENCIA, numero_conta, cpf_cadastrado)
+        if conta is not None:
+            contas.append(conta)
+
+    elif opcao == '7':
+        print('Listar Contas')
+        print("-" * 30)
+        for conta in contas:
+            print(conta)
